@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body 
+{
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    font-size: 16px;
+}
+
+.container 
+{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.left_panel 
+{
+    width: 50%;
+    background-color: rgb(212, 227, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.left_panel .text h2 {
+    font-size: 45px;
+    color: rgb(60, 90, 87);
+}
+
+.left_panel .text p {
+    font-size: 18px;
+    color: rgb(108, 122, 116);
+}
+
+.right_panel 
+{
+    width: 50%;
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: auto;
+}
+
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.form h1 
+{
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    color: rgb(75, 73, 73);
+    text-align: center;
+}
+
+.form h2 {
+    font-size: 20px;
+    margin: 10px 0 20px 0;
+    text-align: center;
+    color: rgb(75, 73, 73);
+}
+
+.form label 
+{
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form input,
+.form textarea {
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form input:focus,
+.form textarea:focus {
+    outline: 2px solid rgb(60, 164, 77);
+    border-color: rgb(60, 164, 77);
+}
+
+.form_btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(60, 90, 87);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.form_btn:hover 
+{
+    background-color: rgb(11, 59, 54);
+}
+
+.upload-container 
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.upload_btn 
+{
+    padding: 8px 12px;
+    background-color: rgb(224, 247, 234);
+    color: rgb(62, 164, 77);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.upload_btn:hover {
+    background-color: rgb(178, 228, 193);
+}
+
+.upload_btn:active {
+    background-color: rgb(153, 208, 167);
+}
+
+.success-message 
+{
+    background-color: rgb(212, 237, 218);
+    color: rgb(21, 87, 36);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(195, 230, 203);
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}

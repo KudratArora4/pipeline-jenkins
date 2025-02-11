@@ -1,0 +1,29 @@
+.header-menu .ui.button 
+{
+    border-radius: 20px; 
+    margin-left: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  }
+  
+
+  .header-menu .ui.primary.button 
+  {
+    background-color: rgb(4, 105, 237); 
+    color: white;
+  }
+  
+
+  .header-menu .ui.primary.button:hover 
+  {
+    background-color: #333; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+  }
+  
+  .header-menu .ui.button:hover 
+  {
+    background-color: #333; 
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+  }
+  

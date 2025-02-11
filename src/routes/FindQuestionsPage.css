@@ -1,0 +1,330 @@
+html, body 
+{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.find-questions-page 
+{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(212, 227, 220);
+  padding: 20px;
+}
+
+.find-questions-page h1 
+{
+  text-align: center;
+  color: rgb(60, 90, 87);
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.filters 
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgb(249, 249, 249);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.filters 
+{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.filters > * 
+{
+  flex: 1;
+  margin-right: 10px;
+}
+
+.filters > *:last-child 
+{
+  margin-right: 0;
+}
+
+.filters input,
+.filters .ui.dropdown 
+{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(60, 90, 87);
+}
+
+.filters button,
+.clear-filters-btn 
+{
+  background-color: rgb(62, 164, 77);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.filters button:hover,
+.clear-filters-btn:hover 
+{
+  background-color: rgb(25, 86, 35);
+}
+
+.question-list 
+{
+  flex-grow: 1;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.question-card 
+{
+  max-width: 600px;
+  border: none;
+  background-color: rgb(249, 249, 249);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.question-card.expanded 
+{
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.question-card .header 
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(60, 90, 87);
+}
+
+.question-card .meta 
+{
+  font-size: 0.9rem;
+  color: rgb(108, 122, 116);
+}
+
+.question-card .description 
+{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 3.6em;
+  font-size: 1rem;
+  color: rgb(52, 73, 94);
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.question-card.expanded .description 
+{
+  white-space: normal;
+  max-height: none;
+}
+
+.tags 
+{
+  margin-top: 10px;
+}
+
+.tag 
+{
+  display: inline-block;
+  background-color: rgb(62, 164, 77);
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-right: 8px;
+  margin-top: 5px;
+}
+
+.card .extra 
+{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.card .ui.button {
+  border-radius: 5px;
+}
+
+.card .ui.button.green 
+{
+  background-color: rgb(62, 164, 77);
+  color: white;
+}
+
+.card .ui.button.red 
+{
+  background-color: rgb(231, 76, 60);
+  color: white;
+}
+
+.react-datepicker-wrapper 
+{
+  width: 100%;
+}
+
+.react-datepicker__input-container input 
+{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 5px;
+  box-shadow: none;
+  background-color: rgb(255, 255, 255);
+  color: rgb(52, 73, 94);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.react-datepicker__input-container input:focus 
+{
+  border-color: rgb(41, 128, 185);
+}
+
+.react-datepicker-popper 
+{
+  z-index: 9999;
+}
+
+.react-datepicker 
+{
+  font-family: 'Arial', sans-serif;
+  border: 1px solid rgb(206, 212, 218);
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header 
+{
+  background-color: rgb(41, 128, 185);
+  color: rgb(255, 255, 255);
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__current-month 
+{
+  color: rgb(52, 73, 94);
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected 
+{
+  background-color: rgb(41, 128, 185);
+  color: rgb(255, 255, 255);
+}
+
+.react-datepicker__day--today 
+{
+  border-color: rgb(41, 128, 185);
+}
+
+@media screen and (max-width: 768px) 
+{
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters > * {
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  .filters > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.replies-section 
+{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(249, 249, 249);
+  border-radius: 5px;
+}
+
+.replies-section h4 
+{
+  margin: 0;
+  color: rgb(60, 90, 87);
+}
+
+.replies-section ul 
+{
+  list-style-type: none;
+  padding: 0;
+}
+
+.replies-section li 
+{
+  margin-bottom: 5px;
+  color: rgb(52, 73, 94);
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: rgb(225, 247, 213);
+}
+
+.reply-textarea 
+{
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  resize: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s;
+}
+
+.reply-textarea:focus 
+{
+  border-color: rgb(74, 144, 226);
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.add-question-section 
+{
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.add-question-link 
+{
+  color: rgb(0, 123, 255);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.add-question-link:hover 
+{
+  text-decoration: none;
+}

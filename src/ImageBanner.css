@@ -1,0 +1,31 @@
+.ImageBanner 
+{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .ImageBanner img 
+  {
+    width: 100%;
+    height: auto; 
+  }
+  
+  .ImageBanner .hover-text 
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 64px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .ImageBanner:hover .hover-text 
+  {
+    opacity: 1;
+  }

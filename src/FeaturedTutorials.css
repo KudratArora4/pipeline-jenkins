@@ -1,0 +1,22 @@
+.featured-tutorials 
+{
+    padding: 20px;
+}
+  
+  .featured-tutorials h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    }
+  
+  .ui.card 
+  {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .ui.button.primary 
+  {
+    margin-top: 20px;
+  }
+  

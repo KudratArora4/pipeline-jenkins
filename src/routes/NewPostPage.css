@@ -1,0 +1,65 @@
+.new-post-container 
+{
+    padding: 20px;
+    text-align: center;
+    background-color: #6d8b88;
+  }
+
+  .heading h1 
+  {
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    color: whitesmoke;
+  }
+  
+  .post-type-selector 
+  {
+    margin: 20px 0;
+  }
+  
+  .toggle-button 
+  {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover 
+  {
+    background-color: white;
+  }
+  
+  .toggle-button.active 
+  {
+    background-color: #3c5a57;
+    color: white;
+    border: 1px solid #a7ccc8;
+  }
+  .back-link 
+  {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .back-link a 
+  {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .back-link a:hover 
+  {
+    text-decoration: underline;
+  }
+  
+  .heading 
+  {
+    text-align: center;
+    margin-bottom: 20px;
+  }

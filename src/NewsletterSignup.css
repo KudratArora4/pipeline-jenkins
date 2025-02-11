@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .newsletter-container 
+  {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin: 40px auto; 
+    padding: 20px; 
+  }
+  
+  .LeftSection 
+  {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    border-radius: 15px 0 0 15px; 
+    background-color: #333;
+    
+  }
+  
+  .LeftSection h1 
+  {
+    font-size: 40px;
+    color: whitesmoke;
+  }
+  
+  .RightSection 
+  {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 15px 15px 0; 
+    background-color: rgb(221, 226, 226);
+  }
+  
+  .RightSection h2 
+  {
+    margin-bottom: 20px;
+  }
+  
+  .RightSection input[type="email"] 
+  {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    transition: border 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .RightSection input[type="email"]:focus 
+  {
+    border-color: rgb(76, 127, 223);
+  }
+  
+  .RightSection button 
+  {
+    padding: 12px 25px;
+    background-color: rgb(4, 105, 237);
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 50%;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .RightSection button:hover 
+  {
+    background-color: #333;
+  }
+  

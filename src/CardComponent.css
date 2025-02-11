@@ -1,0 +1,18 @@
+.custom-card .extra-content 
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .custom-card .rating 
+  {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-card .author 
+  {
+    align-items: flex-end;
+    margin-left: 260px  ; 
+  }

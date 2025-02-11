@@ -1,0 +1,36 @@
+.header-menu 
+{
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex; 
+  align-items: center; 
+  padding: 0 20px; 
+}
+
+
+.header-menu .header 
+{
+  color: rgb(4, 105, 237); 
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-right: auto; 
+}
+
+
+.header-menu .ui.input 
+{
+  flex: 0 1 300px !important; 
+  border-radius: 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+
+}
+
+
+.header-menu .ui.input input 
+{
+  border-radius: 20px; 
+  border: 1px solid rgb(4, 105, 237); 
+  padding: 10px;
+  width: 100%; 
+}
