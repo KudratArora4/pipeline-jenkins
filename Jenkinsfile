@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         SONARQUBE = 'Sonarqube'  // Name of the SonarQube configuration in Jenkins
+        SONAR_SCANNER_PATH = "C:\\Users\\KUDRAT ARORA\\Downloads\\sonar-scanner-cli-6.2.1.4610-windows-x64\\sonar-scanner-6.2.1.4610-windows-x64\\bin"  // Full path to sonar-scanner.bat
     }
 
     stages {
@@ -46,10 +47,10 @@ pipeline {
                     // Use the dev-token stored in Jenkins credentials
                     withSonarQubeEnv('Sonarqube') {
                         withCredentials([string(credentialsId: 'dev-token', variable: 'SONAR_TOKEN')]) {
-                            // Pass the SonarQube token as an environment variable to avoid Groovy string interpolation
+                            // Explicitly set the SonarQube scanner path and pass the token using environment variables
                             bat """
                                 set SONAR_TOKEN=${SONAR_TOKEN}
-                                sonar-scanner.bat -D"sonar.projectKey=dev-pipeline" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=%SONAR_TOKEN%" -D"sonar.sourceEncoding=UTF-8"
+                                "%SONAR_SCANNER_PATH%\\sonar-scanner.bat" -D"sonar.projectKey=dev-pipeline" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=%SONAR_TOKEN%" -D"sonar.sourceEncoding=UTF-8"
                             """
                         }
                     }
