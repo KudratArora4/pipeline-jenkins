@@ -1,8 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import App from '../App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import '@testing-library/jest-dom';
+
+import { render, screen } from '@testing-library/react';
+import NewPostPage from './routes/NewPostPage'; 
+
+import { MemoryRouter } from 'react-router-dom';
+
+test('renders NewPostPage component and checks heading text', () => {
+  render(
+    <MemoryRouter initialEntries={['/newpost']}>
+      <NewPostPage />
+    </MemoryRouter>
+  );
+  
+  // Check for the heading text
+  const headingText = screen.getByText(/What do you want to Ask or Share\?/i);
+  expect(headingText).toBeInTheDocument();
 });
