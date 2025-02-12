@@ -44,5 +44,12 @@
   },
   "devDependencies": {
     "jest": "^27.5.1"
-  }
+  },
+  "jest": {
+  "testMatch": [
+    "**/src/**/*.{test,spec}.js"
+  ],
+  "collectCoverage": true
+}
+
 }
