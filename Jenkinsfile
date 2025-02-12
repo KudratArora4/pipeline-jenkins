@@ -2,22 +2,28 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from Git repository
+                git 'https://github.com/KudratArora4/pipeline-jenkins.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install Node.js dependencies
+                    bat 'npm install'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Building the project...'
-                bat 'npm install' // Use bat instead of sh for Windows
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                bat 'npm test' // Use bat instead of sh for Windows
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the app...'
-                // Add your deployment command here
+                script {
+                    // Run npm build command
+                    bat 'npm run build'
+                }
             }
         }
     }
