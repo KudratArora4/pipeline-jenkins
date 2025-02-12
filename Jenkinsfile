@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        SONARQUBE = 'SonarQube'  // Name of the SonarQube server configuration in Jenkins
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -32,6 +36,18 @@ pipeline {
                 script {
                     // Run the Jest tests (Windows batch)
                     bat 'npm test -- --ci --runInBand --coverage'
+                }
+            }
+        }
+
+        // Add the SonarQube analysis stage
+        stage('Code Quality Analysis') {
+            steps {
+                script {
+                    // Run SonarQube analysis
+                    withSonarQubeEnv('SonarQube') {
+                        bat 'sonar-scanner'
+                    }
                 }
             }
         }
