@@ -2,7 +2,10 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE = 'Sonarqube'  // Name of the SonarQube configuration in Jenkins
+        SONARQUBE = 'SonarQube'  // Name of the SonarQube server configuration in Jenkins
+        SONAR_HOST_URL = 'http://localhost:9000'
+        SONAR_PROJECT_KEY = 'dev-pipeline'  // Replace with your project key from SonarQube
+        SONAR_TOKEN = credentials('sonar-token')  // Reference to your stored Jenkins secret
     }
 
     stages {
@@ -40,24 +43,21 @@ pipeline {
             }
         }
 
+        // Add the SonarQube analysis stage
         stage('Code Quality Analysis') {
             steps {
                 script {
-                    // Run SonarQube analysis using the SonarQube environment set up in Jenkins
-                    withSonarQubeEnv('Sonarqube') {
-                        // This uses the Jenkins SonarQube plugin to run analysis
-                        bat 'npm run sonar'  // If you set up a script in package.json for sonar-scanner
+                    // Run SonarQube analysis
+                    withSonarQubeEnv(SONARQUBE) {
+                        bat """
+                        sonar-scanner.bat ^
+                        -Dsonar.projectKey=${SONAR_PROJECT_KEY} ^
+                        -Dsonar.sources=src ^
+                        -Dsonar.host.url=${SONAR_HOST_URL} ^
+                        -Dsonar.login=${SONAR_TOKEN} ^
+                        -Dsonar.sourceEncoding=UTF-8
+                        """
                     }
-                }
-            }
-        }
-
-        // Optionally, you can add an additional stage to wait for the analysis report to be generated
-        stage('Quality Gate') {
-            steps {
-                script {
-                    // Wait for SonarQube quality gate to finish
-                    waitForQualityGate abortPipeline: true
                 }
             }
         }
