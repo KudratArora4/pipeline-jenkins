@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script {
                     // Run SonarQube analysis
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('Sonarqube') {
                         bat 'sonar-scanner'
                     }
                 }
