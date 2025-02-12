@@ -22,8 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --ci --runInBand --coverage",
-    "eject": "react-scripts eject",
-    "sonar": "sonar-scanner -Dsonar.projectKey=dev-pipeline -Dsonar.sources=src -Dsonar.host.url=http://localhost:9000 -Dsonar.login=dev-token -Dsonar.sourceEncoding=UTF-8"
+    "eject": "react-scripts eject"
+    
   
   },
   "eslintConfig": {
