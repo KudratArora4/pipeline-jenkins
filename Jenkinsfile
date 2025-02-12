@@ -46,8 +46,11 @@ pipeline {
                     // Use the dev-token stored in Jenkins credentials
                     withSonarQubeEnv('Sonarqube') {
                         withCredentials([string(credentialsId: 'dev-token', variable: 'SONAR_TOKEN')]) {
-                            // Run SonarQube analysis using the stored token
-                            bat "sonar-scanner.bat -D\"sonar.projectKey=dev-pipeline\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://localhost:9000\" -D\"sonar.token=${SONAR_TOKEN}\""
+                            // Pass the SonarQube token as an environment variable to avoid Groovy string interpolation
+                            bat """
+                                set SONAR_TOKEN=${SONAR_TOKEN}
+                                sonar-scanner.bat -D"sonar.projectKey=dev-pipeline" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=%SONAR_TOKEN%" -D"sonar.sourceEncoding=UTF-8"
+                            """
                         }
                     }
                 }
