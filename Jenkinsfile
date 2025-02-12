@@ -2,10 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE = 'SonarQube'  // Name of the SonarQube server configuration in Jenkins
-        SONAR_HOST_URL = 'http://localhost:9000'
-        SONAR_PROJECT_KEY = 'dev-pipeline'  // Replace with your project key from SonarQube
-        SONAR_TOKEN = credentials('sonar-token')  // Reference to your stored Jenkins secret
+        SONARQUBE = 'Sonarqube'  // Name of the SonarQube configuration in Jenkins
     }
 
     stages {
@@ -43,21 +40,26 @@ pipeline {
             }
         }
 
-        // Add the SonarQube analysis stage
         stage('Code Quality Analysis') {
             steps {
                 script {
-                    // Run SonarQube analysis
-                    withSonarQubeEnv(SONARQUBE) {
-                        bat """
-                        sonar-scanner.bat ^
-                        -Dsonar.projectKey=${SONAR_PROJECT_KEY} ^
-                        -Dsonar.sources=src ^
-                        -Dsonar.host.url=${SONAR_HOST_URL} ^
-                        -Dsonar.login=${SONAR_TOKEN} ^
-                        -Dsonar.sourceEncoding=UTF-8
-                        """
+                    // Use the dev-token stored in Jenkins credentials
+                    withSonarQubeEnv('Sonarqube') {
+                        withCredentials([string(credentialsId: 'dev-token', variable: 'SONAR_TOKEN')]) {
+                            // Run SonarQube analysis using the stored token
+                            bat "sonar-scanner.bat -D\"sonar.projectKey=dev-pipeline\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://localhost:9000\" -D\"sonar.token=${SONAR_TOKEN}\""
+                        }
                     }
+                }
+            }
+        }
+
+        // Optionally, you can add an additional stage to wait for the analysis report to be generated
+        stage('Quality Gate') {
+            steps {
+                script {
+                    // Wait for SonarQube quality gate to finish
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
