@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE = 'SonarQube'  // Name of the SonarQube server configuration in Jenkins
+        SONARQUBE = 'Sonarqube'  
     }
 
     stages {
@@ -40,13 +40,20 @@ pipeline {
             }
         }
 
-        // Add the SonarQube analysis stage
+        // SonarQube analysis stage
         stage('Code Quality Analysis') {
             steps {
                 script {
-                    // Run SonarQube analysis
+                    // Run SonarQube analysis using the configured token and environment
                     withSonarQubeEnv('Sonarqube') {
-                        bat 'sonar-scanner'
+                        bat """
+                        sonar-scanner.bat ^
+                        -Dsonar.projectKey=dev-pipeline ^
+                        -Dsonar.sources=src ^
+                        -Dsonar.host.url=http://localhost:9000 ^
+                        -Dsonar.login=dev-token ^
+                        -Dsonar.sourceEncoding=UTF-8
+                        """
                     }
                 }
             }
@@ -55,7 +62,7 @@ pipeline {
 
     post {
         success {
-            echo 'Build and Tests completed successfully!'
+            echo 'Build, Tests, and Code Quality Analysis completed successfully!'
         }
         failure {
             echo 'Build or Tests failed.'
