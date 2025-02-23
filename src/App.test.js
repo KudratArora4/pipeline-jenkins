@@ -13,7 +13,7 @@ test('renders NewPostPage component and checks heading text', () => {
     </MemoryRouter>
   );
   
-  // Check for the heading text
+ 
   const headingText = screen.getByText(/What do you want to Ask or Share\?/i);
   expect(headingText).toBeInTheDocument();
 });

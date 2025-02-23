@@ -60,11 +60,21 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Build, Tests, and Code Quality Analysis completed successfully!'
-        }
-        failure {
-            echo 'Build or Tests failed.'
-        }
+    success {
+        emailext (
+            subject: "Jenkins Build Successful - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Good news! The Jenkins pipeline for ${env.JOB_NAME} completed successfully.",
+            to: "arorakudrat19@gmail.com"
+        )
     }
+
+    failure {
+        emailext (
+            subject: "Jenkins Build Failed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Oops! The Jenkins pipeline for ${env.JOB_NAME} failed.",
+            to: "arorakudrat19@gmail.com"
+        )
+    }
+}
+
 }
