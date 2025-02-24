@@ -87,12 +87,11 @@ pipeline {
             emailext (
                 subject: "Jenkins Build & Deployment Successful - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
-                Good news! The Jenkins pipeline for ${env.JOB_NAME} completed successfully.
+                The Jenkins pipeline for ${env.JOB_NAME} completed successfully.
                 
                 - **Docker Deployment URL:** http://localhost:3000
                 - **Netlify Release URL:** https://${NETLIFY_SITE_ID}.netlify.app
                 
-                View logs in Jenkins for details.
                 """,
                 to: "arorakudrat19@gmail.com"
             )
@@ -101,7 +100,7 @@ pipeline {
         failure {
             emailext (
                 subject: "Jenkins Build Failed - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "Oops! The Jenkins pipeline for ${env.JOB_NAME} failed. Check the logs for more details.",
+                body: "The Jenkins pipeline for ${env.JOB_NAME} failed. Check the logs for more details.",
                 to: "arorakudrat19@gmail.com"
             )
         }
